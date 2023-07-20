@@ -2,18 +2,31 @@
 
 class Program
 {
+    public const string DEFAULT_TRAINING_DATA = "data/default_train";
+
+    Model? model = null;
+    State state;
+    // This should never be null but it's marked as such because of warning.
+    private string? _trainingDataPath;
+    string TrainingData
+    {
+        get => _trainingDataPath ?? DEFAULT_TRAINING_DATA;
+        set
+        {
+            _trainingDataPath = value ?? DEFAULT_TRAINING_DATA;
+            model = new(_trainingDataPath);
+        }
+    }
+
     static void Main(string[] args)
     {
-        Model m = new("data/wine-training");
-        try
-        {
-            if (args.Length > 1)
-                m.KValue = Int32.Parse(args[1]);
-        }
-        catch
-        {
-            Console.WriteLine("Invalid k value. Proceeding with k = 3.");
-        }
-        m.Test("data/wine-test");
+        Program program = new();
+    }
+
+
+    private Program()
+    {
+        state = State.START;
+        TrainingData = DEFAULT_TRAINING_DATA;
     }
 }
