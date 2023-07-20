@@ -10,7 +10,7 @@ class Program
             if (args.Length > 1)
                 m.KValue = Int32.Parse(args[1]);
         }
-        catch (Exception e)
+        catch
         {
             Console.WriteLine("Invalid k value. Proceeding with k = 3.");
         }
