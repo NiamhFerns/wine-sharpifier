@@ -15,7 +15,7 @@ public class Model
     public Model(string path, bool ShowAll = false, string Name = "Unnamed Model")
     {
         this.Name = Name;
-        trainingData = retreiveInstances(loadData(path));
+        trainingData = retrieveInstances(loadData(path));
 
         // Grab feature count and check all features are correct length.
         featureCount = trainingData[0].inputFeatures.Length;
@@ -58,7 +58,7 @@ public class Model
     }
 
     // Reads in all instances.
-    private List<Instance> retreiveInstances(List<string> rawInstances)
+    private List<Instance> retrieveInstances(List<string> rawInstances)
     {
         // Split into features with the last "feature" being the classification.
         List<Instance> instances = new();
@@ -157,7 +157,7 @@ public class Model
     // Tests this model based on current kValue and featureBounds.
     public void Test(string path)
     {
-        testingData = retreiveInstances(loadData(path));
+        testingData = retrieveInstances(loadData(path));
         Console.WriteLine($"Test results for {Name}\nk = {KValue}\n");
 
         var predictions = testingData

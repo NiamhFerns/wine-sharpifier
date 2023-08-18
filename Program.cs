@@ -6,6 +6,7 @@ class Program
 
     Model? model = null;
     State state;
+
     // This should never be null but it's marked as such because of warning.
     private string? _trainingDataPath;
     string TrainingData
@@ -22,7 +23,6 @@ class Program
     {
         Program program = new();
     }
-
 
     private Program()
     {
